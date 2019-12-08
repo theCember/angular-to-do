@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { KanbanState } from '../app/shared/enums';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-to-do';
+  public appTitle: string = 'Kanban board';
+  public toDoState: String = KanbanState.TO_DO;
+  public doingState: String = KanbanState.DOING;
+  public doneState: String = KanbanState.DONE;
 }
