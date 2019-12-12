@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Task } from 'src/app/shared/models/task';
 
 @Component({
   selector: 'app-task-row',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./task-row.component.css']
 })
 export class TaskRowComponent implements OnInit {
+
+  @Input() task: Task;
 
   constructor() { }
 
