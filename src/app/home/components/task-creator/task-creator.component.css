@@ -4,4 +4,21 @@
 
 #submitter {
     padding: 4px;
+    height: 25px;
+    width: 25px;
+    margin-left: 3px;
+    padding: 0px;
+}
+
+#task-input {
+    height: 25px;
+}
+
+#cross {
+    font-size: 13px;
+    margin: 0 auto;
+}
+
+#input-name {
+    margin-bottom: 5px;
 }
