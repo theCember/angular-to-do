@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { createMockData } from '../mocks/mock-data';
-import { Task } from '../../shared/models/task';
+import { createMockDataToDo, createMockDataDoing, createMockDataDone } from '../mocks/mock-data';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
@@ -8,14 +7,26 @@ import { Observable, of } from 'rxjs';
 })
 export class TaskService {
 
-  private mockData: Array<Task>;
+  private mockDataToDo: Array<string>;
+  private mockDataDoing: Array<string>;
+  private mockDataDone: Array<string>;
 
-  constructor() { 
-    this.mockData = createMockData();
+  constructor() {
+    this.mockDataToDo = createMockDataToDo();
+    this.mockDataDoing = createMockDataDoing();
+    this.mockDataDone = createMockDataDone();
   }
 
-  public getMockData(): Observable<Array<Task>> {
-    return of(this.mockData);
+  public getMockDataTodo(): Observable<Array<string>> {
+    return of(this.mockDataToDo);
+  }
+
+  public getMockDoing(): Observable<Array<string>> {
+    return of(this.mockDataDoing);
+  }
+
+  public getMockDone(): Observable<Array<string>> {
+    return of(this.mockDataDone);
   }
 
 }

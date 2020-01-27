@@ -1,10 +1,11 @@
-import { KanbanState, Task } from "../../shared/models/task";
+export const createMockDataToDo = () => {
+  return ['cook a dinner', 'do the dishes', 'find new job'];
+};
 
-export const createMockData = () => {
-  let mockTask1 = new Task("cook a dinner");
-  let mockTask2 = new Task("do the dishes");
-  mockTask2.setState(KanbanState.DOING);
-  let mockTask3 = new Task("find new job");
-  mockTask3.setState(KanbanState.DONE);
-  return [mockTask1, mockTask2, mockTask3];
+export const createMockDataDoing = () => {
+  return ['ride a bike', 'order pizza', 'get a life'];
+};
+
+export const createMockDataDone = () => {
+  return ['Netflix & chill', 'check news', 'call bae'];
 };

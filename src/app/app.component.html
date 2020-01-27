@@ -7,8 +7,25 @@
     <div class="col-sm-4 col-md-4 col-lg-4">{{ doingState }}</div>
     <div class="col-sm-4 col-md-4 col-lg-4">{{ doneState }}</div>
   </div>
-  <div *ngFor="let task of tasks | async">
-    <app-task-row [task]=task></app-task-row>
+  <div cdkDropListGroup class="row text-center">
+    <div cdkDropList 
+      [cdkDropListData]="tasksToDo" 
+      class="col-sm-4 col-md-4 col-lg-4 task-container to-do-container"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of tasksToDo" cdkDrag>{{item}}</div>
+    </div>
+    <div cdkDropList 
+      [cdkDropListData]="tasksDoing" 
+      class="col-sm-4 col-md-4 col-lg-4 task-container to-do-container"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of tasksDoing" cdkDrag>{{item}}</div>
+    </div>
+    <div cdkDropList 
+      [cdkDropListData]="tasksDone" 
+      class="col-sm-4 col-md-4 col-lg-4 task-container to-do-container"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of tasksDone" cdkDrag>{{item}}</div>
+    </div>
   </div>
 </div>
 <router-outlet></router-outlet>

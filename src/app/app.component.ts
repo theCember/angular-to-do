@@ -1,22 +1,46 @@
-import { Component } from "@angular/core";
-import { KanbanState, Task } from "./shared/models/task";
-import { TaskService } from "./core/services/task.service";
+import { Component } from '@angular/core';
+
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { KanbanState } from './shared/models/task';
+import { TaskService } from './core/services/task.service';
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public appTitle: string = "Kanban board";
-  public toDoState: String = KanbanState.TO_DO;
-  public doingState: String = KanbanState.DOING;
-  public doneState: String = KanbanState.DONE;
-  public tasks: Array<Task>;
+  public appTitle = 'Kanban board';
+  public toDoState: string = KanbanState.TO_DO;
+  public doingState: string = KanbanState.DOING;
+  public doneState: string = KanbanState.DONE;
+  public tasksToDo: Array<string>;
+  public tasksDoing: Array<string>;
+  public tasksDone: Array<string>;
 
-  constructor(private taskService: TaskService) {}
+  constructor(private taskService: TaskService) { }
 
   ngOnInit() {
-    this.taskService.getMockData().subscribe(mocks => this.tasks = mocks);
+    this.taskService.getMockDataTodo().subscribe(
+      mocks => { this.tasksToDo = mocks; }
+    );
+    this.taskService.getMockDoing().subscribe(
+      mocks => { this.tasksDoing = mocks; }
+    );
+    this.taskService.getMockDone().subscribe(
+      mocks => { this.tasksDone = mocks; }
+    );
   }
+
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+                        event.container.data,
+                        event.previousIndex,
+                        event.currentIndex);
+    }
+  }
+
 }
