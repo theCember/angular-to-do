@@ -3,17 +3,26 @@ import { NgModule } from '@angular/core';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatNativeDateModule } from '@angular/material/core';
+import { ProgressBarComponent } from './home/components/progress-bar/progress-bar.component';
+import { FormsModule } from '@angular/forms';
+import { DemoMaterialModule } from './material-module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ProgressBarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
-    DragDropModule
+    BrowserAnimationsModule,
+    FormsModule,
+    DragDropModule,
+    MatNativeDateModule,
+    DemoMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

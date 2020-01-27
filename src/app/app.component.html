@@ -27,6 +27,7 @@
       <div class="example-box" *ngFor="let item of tasksDone" cdkDrag>{{item}}</div>
     </div>
   </div>
+  <app-progress-bar [progressValue]="progress"></app-progress-bar>
 </div>
 <router-outlet></router-outlet>
 

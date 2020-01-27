@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { KanbanState } from './shared/models/task';
 import { TaskService } from './core/services/task.service';
@@ -17,6 +16,7 @@ export class AppComponent {
   public tasksToDo: Array<string>;
   public tasksDoing: Array<string>;
   public tasksDone: Array<string>;
+  public progress: number;
 
   constructor(private taskService: TaskService) { }
 
@@ -30,6 +30,10 @@ export class AppComponent {
     this.taskService.getMockDone().subscribe(
       mocks => { this.tasksDone = mocks; }
     );
+    this.progress = this.taskService.countProgress(
+      this.tasksToDo.length + this.tasksDoing.length + this.tasksDone.length,
+      this.tasksDone.length);
+    console.log(this.progress);
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -37,9 +41,12 @@ export class AppComponent {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
       transferArrayItem(event.previousContainer.data,
-                        event.container.data,
-                        event.previousIndex,
-                        event.currentIndex);
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+      this.progress = this.taskService.countProgress(
+        this.tasksToDo.length + this.tasksDoing.length + this.tasksDone.length,
+        this.tasksDone.length);
     }
   }
 

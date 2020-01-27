@@ -10,6 +10,7 @@ export class TaskService {
   private mockDataToDo: Array<string>;
   private mockDataDoing: Array<string>;
   private mockDataDone: Array<string>;
+  private readonly HUNDRED_PERCENT = 100;
 
   constructor() {
     this.mockDataToDo = createMockDataToDo();
@@ -27,6 +28,11 @@ export class TaskService {
 
   public getMockDone(): Observable<Array<string>> {
     return of(this.mockDataDone);
+  }
+
+  public countProgress(numerOfTasks: number, tasksDone: number): number {
+    return numerOfTasks && numerOfTasks > 0 ?
+      tasksDone / numerOfTasks * this.HUNDRED_PERCENT : 0;
   }
 
 }
