@@ -1,0 +1,13 @@
+<div class="creator-holder">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">Create task:</div>
+    </div>
+    <div class="row">
+        <form [formGroup]="creatorForm">
+            <input type="text" formControlName="taskName" #taskInput placeholder="Task name..." required>
+            <button type="button" id="submitter" class="btn btn-sm btn-warning" (click)="emitTaskName(taskInput)">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button>
+        </form>
+    </div>
+</div>
