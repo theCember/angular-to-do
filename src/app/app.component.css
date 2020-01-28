@@ -1,5 +1,5 @@
 .task-container {
-  border-radius: 5px;
+  border-radius: 2px;
   border-style: solid;
   border-color: #dddddd;
   border-width: 1px;
@@ -9,7 +9,7 @@
 
 .task-box {
   margin: 0px;
-  padding: 3px;
+  padding: 5px;
   border-bottom: 1px solid #dddddd;
 }
 
@@ -18,10 +18,23 @@
 }
 
 #app-title {
-    margin: 25px 0px 25px 0px;
+  margin: 25px 0px 25px 0px;
+  font-size: 50px;
 }
 
 #kanban-names {
-    margin-bottom: 5px;
-    font-size: 20px;
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+.name-box-left {
+  background: linear-gradient(0.25turn, #1e1e1e, #b1b2b6);
+}
+
+.name-box-middle {
+  background: #b1b2b6;
+}
+
+.name-box-right {
+  background: linear-gradient(0.25turn, #b1b2b6, #1e1e1e);
 }

@@ -1,10 +1,12 @@
 <div class="creator-holder">
     <div class="row" id="input-name">
-        <div class="col-sm-12 col-md-12 col-lg-12"> New task: </div>
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h3> New task: </h3>  
+        </div>
     </div>
     <div class="row">
-        <input type="text" #taskInput placeholder="Task name...">
-        <button type="button" id="submitter" class="btn btn-sm btn-warning" (click)="emitTaskName(taskInput)">
+        <input type="text" id="task-input" placeholder="Task name...">
+        <button type="button" id="submitter" class="btn btn-sm btn-warning" (click)="emitTaskName('task-input')">
             <span class="glyphicon glyphicon-plus" #cross aria-hidden="true"></span>
         </button>
     </div>
