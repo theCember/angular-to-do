@@ -1,13 +1,17 @@
 <div class="creator-holder">
     <div class="row" id="input-name">
         <div class="col-sm-12 col-md-12 col-lg-12">
-            <h3> New task: </h3>  
+            <h3> New task: </h3>
         </div>
     </div>
-    <div class="row">
-        <input type="text" id="task-input" placeholder="Task name...">
-        <button type="button" id="submitter" class="btn btn-sm btn-warning" (click)="emitTaskName('task-input')">
+    <form class="row" [formGroup]="creatorForm" (ngSubmit)="emitTaskName()">
+        <input formControlName="taskName" type="text" id="task-input" placeholder="Task name...">
+        <button type="submit" id="submitter" class="btn btn-sm btn-warning" [disabled]="!creatorForm.valid">
             <span class="glyphicon glyphicon-plus" #cross aria-hidden="true"></span>
         </button>
-    </div>
+        <div *ngIf="creatorForm.getError('minlength', ['taskName'])" 
+            class="alert alert-danger error-holder" role="alert">
+            Task name has to be at least 3 characters long.
+        </div>
+    </form>
 </div>

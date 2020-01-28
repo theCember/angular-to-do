@@ -32,7 +32,7 @@ export class TaskService {
 
   public countProgress(numerOfTasks: number, tasksDone: number): number {
     return numerOfTasks && numerOfTasks > 0 ?
-      tasksDone / numerOfTasks * this.HUNDRED_PERCENT : 0;
+      Math.trunc(tasksDone / numerOfTasks * this.HUNDRED_PERCENT) : 0;
   }
 
 }

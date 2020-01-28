@@ -50,6 +50,7 @@ export class AppComponent {
   }
 
   captureNewTaskEvent(data: string) {
+    console.log(data);
     this.tasksToDo.push(data);
     this.progress = this.taskService.countProgress(
       this.tasksToDo.length + this.tasksDoing.length + this.tasksDone.length,
