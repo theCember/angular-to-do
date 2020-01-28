@@ -33,7 +33,6 @@ export class AppComponent {
     this.progress = this.taskService.countProgress(
       this.tasksToDo.length + this.tasksDoing.length + this.tasksDone.length,
       this.tasksDone.length);
-    console.log(this.progress);
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -48,6 +47,13 @@ export class AppComponent {
         this.tasksToDo.length + this.tasksDoing.length + this.tasksDone.length,
         this.tasksDone.length);
     }
+  }
+
+  captureNewTaskEvent(data: string) {
+    this.tasksToDo.push(data);
+    this.progress = this.taskService.countProgress(
+      this.tasksToDo.length + this.tasksDoing.length + this.tasksDone.length,
+      this.tasksDone.length);
   }
 
 }

@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ProgressBarComponent } from './home/components/progress-bar/progress-bar.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DemoMaterialModule } from './material-module';
+import { TaskCreatorComponent } from './home/components/task-creator/task-creator.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    TaskCreatorComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +24,8 @@ import { DemoMaterialModule } from './material-module';
     FormsModule,
     DragDropModule,
     MatNativeDateModule,
-    DemoMaterialModule
+    DemoMaterialModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,33 +1,34 @@
 <div class="container text-center">
-  <h1>
+  <h1 id="app-title">
     {{ appTitle }}
   </h1>
-  <div class="row text-center">
+  <div id="kanban-names" class="row text-center">
     <div class="col-sm-4 col-md-4 col-lg-4">{{ toDoState }}</div>
     <div class="col-sm-4 col-md-4 col-lg-4">{{ doingState }}</div>
     <div class="col-sm-4 col-md-4 col-lg-4">{{ doneState }}</div>
   </div>
   <div cdkDropListGroup class="row text-center">
-    <div cdkDropList 
-      [cdkDropListData]="tasksToDo" 
-      class="col-sm-4 col-md-4 col-lg-4 task-container to-do-container"
+    <div cdkDropList [cdkDropListData]="tasksToDo" class="col-sm-4 col-md-4 col-lg-4 task-container to-do-container"
       (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of tasksToDo" cdkDrag>{{item}}</div>
+      <div class="task-box" *ngFor="let item of tasksToDo" cdkDrag>{{item}}</div>
     </div>
-    <div cdkDropList 
-      [cdkDropListData]="tasksDoing" 
-      class="col-sm-4 col-md-4 col-lg-4 task-container to-do-container"
+    <div cdkDropList [cdkDropListData]="tasksDoing" class="col-sm-4 col-md-4 col-lg-4 task-container to-do-container"
       (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of tasksDoing" cdkDrag>{{item}}</div>
+      <div class="task-box" *ngFor="let item of tasksDoing" cdkDrag>{{item}}</div>
     </div>
-    <div cdkDropList 
-      [cdkDropListData]="tasksDone" 
-      class="col-sm-4 col-md-4 col-lg-4 task-container to-do-container"
+    <div cdkDropList [cdkDropListData]="tasksDone" class="col-sm-4 col-md-4 col-lg-4 task-container to-do-container"
       (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of tasksDone" cdkDrag>{{item}}</div>
+      <div class="task-box" *ngFor="let item of tasksDone" cdkDrag>{{item}}</div>
     </div>
   </div>
-  <app-progress-bar [progressValue]="progress"></app-progress-bar>
+  <div class="row text-center">
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <app-task-creator (created)="captureNewTaskEvent($event)"></app-task-creator>
+    </div>
+    <div class="col-sm-8 col-md-8 col-lg-8">
+      <app-progress-bar [progressValue]="progress"></app-progress-bar>
+    </div>
+  </div>
 </div>
 <router-outlet></router-outlet>
 
